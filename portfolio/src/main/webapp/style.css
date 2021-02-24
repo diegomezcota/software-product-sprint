@@ -7,3 +7,16 @@
 #greeting-container {
   margin-top: 20px;
 }
+
+.circular--portrait {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.circular--portrait img {
+  width: 100%;
+  height: auto;
+}
