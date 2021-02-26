@@ -8,15 +8,18 @@
   margin-top: 20px;
 }
 
-.circular--portrait {
-  position: relative;
-  width: 350px;
-  height: 350px;
-  overflow: hidden;
-  border-radius: 50%;
+.image-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.circular--portrait img {
-  width: 100%;
-  height: auto;
+.image-thumbnails img {
+  margin: 10px;
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.image-thumbnails img:hover {
+  border: thick solid black;
 }
