@@ -1,12 +1,41 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  width: 750px;
   font-family: 'Segoe' , 'Segoe UI', 'Optima', 'Arial', sans-serif; ;
 }
 
 #greeting-container {
   margin-top: 20px;
+}
+
+.centered-container {
+    height: 50px;
+    position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.fact-button {
+    transition-duration: 0.4s;
+    color: #944dff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.fact-button:hover {
+    background-color: #944dff;
+    color: white;
 }
 
 .header-text {
