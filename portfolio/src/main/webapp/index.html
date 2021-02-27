@@ -22,31 +22,44 @@
             just to name a few. 
         </p>
         <h2 class="header-text">My projects</h2>
-        <ul>
-            <li>
-                <h3>ZoneDash</h3>
-                <p>
-                    I was an intern at Uber last summer. I worked in the Cloud's host-supply team, and my project was to build a web
-                    dashboard where infrastructure engineers can now check high-level server's status and relevant metrics for their team.
-                    We called it ZoneDash.
-                </p>
-            </li>
-            <li>
-                <h3>Mariano</h3>
-                <p>
-                    Me and my friends built Mariano in a hackathon, a WhatsApp chatbot that solves FAQs from residents of our college dorms.
-                    We won 1st place.
-                </p>
-            </li>
-            <li>
-                <h3>Roundup</h3>
-                <p>
-                    My team and I developed Roundup as our project of our Videogames course. It promotes staying at home in order to keep 
-                    ourselves safe from the pandemic.
-                </p>
-                <a href="https://youtu.be/HFKbFjYX4Ws">Our promo video</a>
-            </li>
-        </ul>
+        <button class="accordion">ZoneDash</button>
+        <div class="panel">
+            <p>
+                I was an intern at Uber last summer. I worked in the Cloud's host-supply team, and my project was to build a web
+                dashboard where infrastructure engineers can now check high-level server's status and relevant metrics for their team.
+                We called it ZoneDash.
+            </p>
+        </div>
+        <button class="accordion">Mariano</button>
+        <div class="panel">
+            <p>
+                Me and my friends built Mariano in a hackathon, a WhatsApp chatbot that solves FAQs from residents of our college dorms.
+                We won 1st place 🥳. 
+            </p>
+        </div>
+        <button class="accordion">Roundup</button>
+        <div class="panel">
+            <p>
+                My team and I developed Roundup as our project of our Videogames course. It promotes staying at home in order to keep 
+                ourselves safe from the pandemic.
+            </p>
+            <a href="https://youtu.be/HFKbFjYX4Ws">Our promo video</a>
+        </div>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                    } else {
+                    panel.style.display = "block";
+                    }
+                });
+            }
+        </script>
         <h2 class="header-text">
             Add me on <a href="https://www.linkedin.com/in/diegomezcota/">LinkedIn</a> and 
             <a href="https://github.com/diegomezcota">Github</a>!
@@ -99,7 +112,7 @@
                 <img src="images/music/orange.jfif">
             </a> 
         </div>
-        <h2 class="header-text">Click here to get a random fact about myself:</h2>
+        <h2 class="header-text">Click to see random facts about myself:</h2>
         <div class="centered-container">
             <div class="center">
                 <button class="fact-button" onclick="addRandomFact()">Click me!</button>
