@@ -76,6 +76,18 @@
   transition: 0.4s;
 }
 
+.accordion-photo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.accordion-photo img {
+    margin: 10px;
+    max-height: 400px;
+    max-width: 400px;
+}
+
 .active, .accordion:hover {
   background-color: #dcccff; 
 }
