@@ -76,13 +76,13 @@
   transition: 0.4s;
 }
 
-.accordion-photo {
+.accordion-media {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.accordion-photo img {
+.accordion-media img {
     margin: 10px;
     max-height: 400px;
     max-width: 400px;
