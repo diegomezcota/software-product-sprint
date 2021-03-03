@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that returns HTML that contains the page view count. */
+/** Handle requests for hello-world page, sends greeting. */
 @WebServlet("/hello-world")
 public class HelloServlet extends HttpServlet {
 
