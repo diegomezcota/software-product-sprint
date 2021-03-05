@@ -35,6 +35,11 @@ public class GetQuotesServlet extends HttpServlet {
     sHarryPotterQuotes.add("\"Yer a wizard Harry.\" - Rubeus Hagrid");
     sHarryPotterQuotes.add("\"Dobby is free.\" - Dobby");
     sHarryPotterQuotes.add("\"I solemnly swear I am up to no good.\" - Harry Potter");
+    sHarryPotterQuotes.add("\"Things we lose have a way of coming back to us in the end, if not always in the way we expect.\" - Luna Lovegood.");
+    sHarryPotterQuotes.add("\"It is the quality of one's convictions that determines success, not the number of followers.\" - Remus Lupin");
+    sHarryPotterQuotes.add("\"I've always wanted to use that spell.\" - Minerva McGonagall");
+    sHarryPotterQuotes.add("'After all this time?' 'Always,' said Snape.");
+    sHarryPotterQuotes.add("\"Numbing the pain for a while will make it worse when you finally feel it.\" - Albus Dumbledore");
     // Convert quotes to json format
     Gson gson = new Gson();
     String json = gson.toJson(sHarryPotterQuotes);
