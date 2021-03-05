@@ -32,9 +32,9 @@ public class GetQuotesServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     ArrayList<String> sHarryPotterQuotes = new ArrayList<String>();
-    sHarryPotterQuotes.add("\"Yer a wizard Harry.\" ― Rubeus Hagrid");
-    sHarryPotterQuotes.add("\"Dobby is free.\" — Dobby");
-    sHarryPotterQuotes.add("\"I solemnly swear I am up to no good.\" ― Harry Potter");
+    sHarryPotterQuotes.add("\"Yer a wizard Harry.\" - Rubeus Hagrid");
+    sHarryPotterQuotes.add("\"Dobby is free.\" - Dobby");
+    sHarryPotterQuotes.add("\"I solemnly swear I am up to no good.\" - Harry Potter");
     // Convert quotes to json format
     Gson gson = new Gson();
     String json = gson.toJson(sHarryPotterQuotes);
