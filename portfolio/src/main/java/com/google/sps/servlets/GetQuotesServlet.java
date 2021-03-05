@@ -15,18 +15,31 @@
 package com.google.sps.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 /** Handle requests for hello-world page, sends greeting. */
 @WebServlet("/get-message")
-public class HardcodedMessage extends HttpServlet {
+public class GetQuotesServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("This is a hardcoded message :)");
+    ArrayList<String> sHarryPotterQuotes = new ArrayList<String>();
+    sHarryPotterQuotes.add("\"Yer a wizard Harry.\" ― Rubeus Hagrid");
+    sHarryPotterQuotes.add("\"Dobby is free.\" — Dobby");
+    sHarryPotterQuotes.add("\"I solemnly swear I am up to no good.\" ― Harry Potter");
+    // Convert quotes to json format
+    Gson gson = new Gson();
+    String json = gson.toJson(sHarryPotterQuotes);
+    // Return server response as JSON
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
   }
 }
