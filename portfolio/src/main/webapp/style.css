@@ -14,6 +14,11 @@
     position: relative;
 }
 
+.centered-element {
+    display: flex;
+    justify-content: center;
+}
+
 .center {
   margin: 0;
   position: absolute;
@@ -36,6 +41,11 @@
 .function-button:hover {
     background-color: #944dff;
     color: white;
+}
+
+.form-inline {
+     margin: 0 auto;
+     display: table;
 }
 
 .header-text {

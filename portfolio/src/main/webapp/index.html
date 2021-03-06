@@ -144,17 +144,24 @@
                 <button class="function-button" onclick="showMovieQuotes()">Click me!</button>
             </div>
         </div>
+        <br/>
         <div class="centered-container">
             <div class="center">
                 <div id="server-message-container"></div>
             </div>
         </div>
-        <form action="/form-handler" method="POST">
-            <p>Enter some text here:</p>
-            <textarea name="text-input">hello world</textarea>
-            <br/>
-            <input type="submit" />
-        </form>
+        <div class="form-inline">
+            <form action="/contact-handler" method="POST">
+                <h2 class="header-text">Tell me your favorite joke!</h2>
+                <div class="centered-element">
+                    <textarea name="text-input"></textarea>
+                </div>
+                <br/>
+                <div class="centered-element">
+                    <input  class="function-button" type="submit" />
+                </div>
+            </form>
+        </div>
     </div>
   </body>
 </html>
