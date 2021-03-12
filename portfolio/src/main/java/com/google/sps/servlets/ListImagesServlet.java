@@ -5,7 +5,11 @@ import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
+import com.google.gson.Gson;
+
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,13 +27,16 @@ public class ListImagesServlet extends HttpServlet {
     Storage storage = StorageOptions.newBuilder().setProjectId(projectId).build().getService();
     Bucket bucket = storage.get(bucketName);
     Page<Blob> blobs = bucket.list();
-
-    // Output <img> elements as HTML.
-    response.setContentType("text/html;");
+    // Prepare image links array
+    ArrayList<String> sImageLinks = new ArrayList<String>();
     for (Blob blob : blobs.iterateAll()) {
-      String imgTag = String.format("<img src=\"%s\" />", blob.getMediaLink());
-      response.getWriter().println(imgTag);
-      response.getWriter().println("<br>");
+        sImageLinks.add(blob.getMediaLink());
     }
+    // Convert link to json
+    Gson gson = new Gson();
+    String json = gson.toJson(sImageLinks);
+    // Return server response as JSON
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
   }
 }
