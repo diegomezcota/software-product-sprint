@@ -5,6 +5,7 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="hardcodedString.js"></script>
   </head>
   <body class="background">
     <div id="content">
@@ -129,12 +130,23 @@
         <h2 class="header-text">Click to see random facts about myself:</h2>
         <div class="centered-container">
             <div class="center">
-                <button class="fact-button" onclick="addRandomFact()">Click me!</button>
+                <button class="function-button" onclick="addRandomFact()">Click me!</button>
             </div>
         </div>
         <div class="centered-container">
             <div class="center">
                 <div id="fact-container"></div>
+            </div>
+        </div>
+        <h2 class="header-text">Click to see a message from the server:</h2>
+        <div class="centered-container">
+            <div class="center">
+                <button class="function-button" onclick="showHardcodedString()">Click me!</button>
+            </div>
+        </div>
+        <div class="centered-container">
+            <div class="center">
+                <div id="server-message-container"></div>
             </div>
         </div>
     </div>
