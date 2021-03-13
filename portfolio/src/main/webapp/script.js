@@ -27,3 +27,13 @@ function addRandomFact() {
   factContainer.innerText = fact;
 }
 
+function listenForFiles() {
+    const file = document.querySelector('#file');
+    file.addEventListener('change', (e) => {
+        // Get the selected file
+        const [file] = e.target.files;
+        // Get the file name and size
+        const { name: fileName } = file;
+        document.querySelector('.file-name').textContent = fileName;
+    });
+}

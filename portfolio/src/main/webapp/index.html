@@ -7,7 +7,7 @@
     <script src="script.js"></script>
     <script src="movieQuotes.js"></script>
   </head>
-  <body class="background">
+  <body onload="listenForFiles();" class="background">
     <div id="content">
         <h1 class="header-text">Diegomez's Portfolio</h1>
         <h2 class="header-text">About myself</h2>
@@ -164,20 +164,30 @@
         </div>
         <div class="form-inline">
             <form action="/upload" method="POST" enctype="multipart/form-data">
-                <h2 class="header-text">Let's make a gallery together!</h2>
+                <h2 class="header-text">
+                    Let's make a <a href="collaborativeGallery.html" target="blank_">gallery</a> together!
+                </h2>
                 <div class="centered-element"><p>Upload an image:</p></div>
                 <div class="centered-element">
-                    <input type="file" name="image">
+                    <div class="file-input">
+                        <input type="file" id="file" class="file" name="image">
+                        <label for="file">
+                            Select file
+                            <p class="file-name"></p>
+                        </label>
+                    </div>
                 </div>
-                <br/>
+                <br> <br>
                 <div class="centered-element">
                     <button class="function-button">Submit</button>
                 </div>
             </form>
         </div>
-        <br> 
+        <br>
         <div class="centered-element">
-             <a href="collaborativeGallery.html">Click here to see all of the uploaded images!</a>
+             <a href="collaborativeGallery.html" target="blank_">
+                <h3>Click here to see all of the uploaded images!</h3>
+            </a>
         </div>
     </div>
   </body>
