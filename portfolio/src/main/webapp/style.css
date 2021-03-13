@@ -2,10 +2,16 @@
   margin-left: auto;
   margin-right: auto;
   width: 650px;
+  font-family: Helvetica, sans-serif;
 }
 
 #greeting-container {
   margin-top: 20px;
+}
+
+.background {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,0.011642156862745057) 0%, rgba(171,156,227,0.4654236694677871) 5%, rgba(149,163,231,0.6222864145658263) 17%, rgba(93,98,240,0.22172619047619047) 48%, rgba(50,195,247,0.5690651260504201) 72%, rgba(0,151,255,0.0844712885154062) 100%);
 }
 
 .image-thumbnails {
