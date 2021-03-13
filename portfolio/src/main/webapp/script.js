@@ -16,7 +16,7 @@
  * Adds a random greeting to the page.
  */
 function addRandomFact() {
-  const factsAboutMyself = ['I love tacos!', 'Lofi is my go-to music for studying.', 'I am the youngest sibling of 3', 
+  const factsAboutMyself = ['I love tacos and sushi!', 'Lofi is my go-to music for studying.', 'I am the youngest sibling of 3', 
       'Real Madrid is my favorite team', 'I am 21 years old.'];
 
   // Pick a random greeting.
