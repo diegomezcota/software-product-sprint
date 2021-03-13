@@ -43,9 +43,6 @@ public class ImageFormHandlerServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    // Get the message entered by the user.
-    String message = request.getParameter("message");
-
     // Get the file chosen by the user.
     Part filePart = request.getPart("image");
     String fileName = UUID.randomUUID().toString();
@@ -61,8 +58,6 @@ public class ImageFormHandlerServlet extends HttpServlet {
     out.println("<a href=\"" + uploadedFileUrl + "\">");
     out.println("<img src=\"" + uploadedFileUrl + "\" />");
     out.println("</a>");
-    out.println("<p>Here's the text you entered:</p>");
-    out.println(message);
   }
 
   /** Uploads a file to Cloud Storage and returns the uploaded file's URL. */
