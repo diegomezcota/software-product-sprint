@@ -5,25 +5,190 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="movieQuotes.js"></script>
   </head>
-  <body>
+  <body onload="listenForFiles();" class="background">
     <div id="content">
-        <h1>Diegomez's Portfolio</h1>
+        <h1 class="header-text">Diegomez's Portfolio</h1>
+        <h2 class="header-text">About myself</h2>
         <p>
-            Hello! My name is Diego Gómez Cota, you can call me Diegomez. I am a junior Computer Science student at Tecnológico de Monterrey.
+            Hello! My name is Diego Gómez Cota, but you can call me Diegomez. I am a junior Computer Science student at Tecnológico de Monterrey.
             I am Mexican, love seafood, music (specially techno and hip-hop), and soccer. I come from Sinaloa (north-west coast), I enjoy 
             hot weather and the beach.
         </p>
-        <div class="circular--portrait">
+        <p>
+            I love tech because we can use it as a tool for helping each other.
+            It's incredible that you can relate anything you can imagine to tech and have the ability
+            to deliver a change in those areas. Music, science, and human-interaction are great examples
+            just to name a few. 
+        </p>
+        <h2 class="header-text">My projects</h2>
+        <button class="accordion">ZoneDash @Uber</button>
+        <div class="panel">
+            <p>
+                I was an intern at Uber last summer. I worked in the Cloud's host-supply team, and my project was to build a web
+                dashboard where infrastructure engineers can now check high-level server's status and relevant metrics for their team.
+                We called it ZoneDash.
+            </p>
+            <div class="accordion-media">
+                <img src="images/projects/uber.jpg">
+            </div>
+        </div>
+        <button class="accordion">Mariano @Hackathon Residencias ITESM </button>
+        <div class="panel">
+            <p>
+                Me and my friends built Mariano in a hackathon, a WhatsApp chatbot that solves FAQs from residents of our college dorms.
+                We won 1st place 🥳. 
+            </p>
+            <div class="accordion-media">
+                <img src="images/projects/mariano.png">
+            </div>
+        </div>
+        <button class="accordion">Roundup @ITESM School project</button>
+        <div class="panel">
+            <p>
+                My team and I developed Roundup as our project of our Videogames course. It promotes staying at home in order to keep 
+                ourselves safe from the pandemic.
+            </p>
+            <div class="accordion-media">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/HFKbFjYX4Ws" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
+            }
+        </script>
+        <h2 class="header-text">Feel free to add me!</h2>
+        <div class="image-thumbnails">
+            <a href="https://github.com/diegomezcota" target="_blank">
+                <img src="images/social_media/github.png">
+            </a>
+            <a href="https://www.linkedin.com/in/diegomezcota/" target="_blank">
+                <img src="images/social_media/linkedin.png">
+            </a>
+        </div>
+        <h2 class="header-text">Here's my gallery</h2>
+        <div class="image-thumbnails">
             <img src="/images/drinking-coffee.png" />
-        </div>
-        <p>Here is my dog, Bruno!</p>
-        <div class="circular--portrait">
             <img src="images/bruno.jpg">
+            <img src="images/cerro.jpg">
+            <img src="images/bruno-leon.jpg">
+            <img src="images/diego-mariana.jpg">
+            <img src="images/familia.jpg">
+            <img src="images/mapi.jpg">
+            <img src="images/friends.jpg">
+            <img src="images/sf.jpg">
         </div>
-        <p>Click here to get a random fact about myself:</p>
-        <button onclick="addRandomFact()">Hello</button>
-        <div id="fact-container"></div>
+        <h2 class="header-text">What do I enjoy photographing:</h2>
+        <ul class="ul">
+            <li>My dog</li>
+            <li>Random moments of the day</li>
+            <li>My family</li>
+            <li>Quality time with my friends</li>
+            <li>Sunsets</li>
+        </ul>
+        <p>
+            Currently I am focusing on taking photos more often. I used to dislike it because it took me out of the moment, but now I
+            understand the value of saving a frame of the present for the future. "Remember is to re-live" says the 
+            <a href="https://www.youtube.com/watch?v=bAIamSf11V8">song</a>
+        </p>
+        <h2 class="header-text">My talent (that's one way to call it)</h2>
+        <p>
+            My friends always ask me for names of specific songs they can't remember (as if I am human-Shazam) and sometimes ask me for
+            my playlists. I listen to a lot of music, so pairing that with my memory I can remember a lot of names. Here are some of my
+            favorite albums I've heard recently:
+        </p>
+        <div class="image-thumbnails">
+           <a href="https://open.spotify.com/album/4Ekdf8v7lFV5c3zIdtpyjY" target="_blank">
+                <img src="images/music/dancehall.jpg">
+            </a>
+            <a href="https://open.spotify.com/album/31KbO7WnDp2AjPdmRTJzdf" target="_blank">
+                <img src="images/music/bandana.jfif">
+            </a> 
+            <a href="https://open.spotify.com/album/5ll74bqtkcXlKE7wwkMq4g" target="_blank">
+                <img src="images/music/LR.jfif">
+            </a> 
+            <a href="https://open.spotify.com/album/070rEVRV6FWywkncMWLhs6" target="_blank">
+                <img src="images/music/LP1.jfif">
+            </a>
+            <a href="https://open.spotify.com/album/623Ef2ZEB3Njklix4PC0Rs" target="_blank">
+                <img src="images/music/orange.jfif">
+            </a> 
+        </div>
+        <h2 class="header-text">Click to see random facts about myself:</h2>
+        <div class="centered-container">
+            <div class="center">
+                <button class="function-button" onclick="addRandomFact()">Click me!</button>
+            </div>
+        </div>
+        <div class="centered-container">
+            <div class="center">
+                <div id="fact-container"></div>
+            </div>
+        </div>
+        <h2 class="header-text">Click to see a random quote from Harry Potter:</h2>
+        <div class="centered-container">
+            <div class="center">
+                <button class="function-button" onclick="showMovieQuotes()">Click me!</button>
+            </div>
+        </div>
+        <br/>
+        <div class="centered-container">
+            <div class="center">
+                <div id="server-message-container"></div>
+            </div>
+        </div>
+        <div class="form-inline">
+            <form action="/contact-handler" method="POST">
+                <h2 class="header-text">Tell me your favorite joke!</h2>
+                <div class="centered-element">
+                    <textarea name="text-input"></textarea>
+                </div>
+                <br/>
+                <div class="centered-element">
+                    <input  class="function-button" type="submit" />
+                </div>
+            </form>
+        </div>
+        <div class="form-inline">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <h2 class="header-text">
+                    Let's make a <a href="collaborativeGallery.html" target="blank_">gallery</a> together!
+                </h2>
+                <div class="centered-element"><p>Upload an image:</p></div>
+                <div class="centered-element">
+                    <div class="file-input">
+                        <input type="file" id="file" class="file" name="image">
+                        <label for="file">
+                            Select file
+                            <p class="file-name"></p>
+                        </label>
+                    </div>
+                </div>
+                <br> <br>
+                <div class="centered-element">
+                    <button class="function-button">Submit</button>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div class="centered-element">
+             <a href="collaborativeGallery.html" target="blank_">
+                <h3>Click here to see all of the uploaded images!</h3>
+            </a>
+        </div>
     </div>
   </body>
 </html>

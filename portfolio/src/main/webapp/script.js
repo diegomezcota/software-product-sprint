@@ -16,7 +16,7 @@
  * Adds a random greeting to the page.
  */
 function addRandomFact() {
-  const factsAboutMyself = ['I love tacos!', 'Lofi is my go-to music for studying.', 'I am the youngest sibling of 3', 
+  const factsAboutMyself = ['I love tacos and sushi!', 'Lofi is my go-to music for studying.', 'I am the youngest sibling of 3', 
       'Real Madrid is my favorite team', 'I am 21 years old.'];
 
   // Pick a random greeting.
@@ -25,4 +25,15 @@ function addRandomFact() {
   // Add it to the page.
   const factContainer = document.getElementById('fact-container');
   factContainer.innerText = fact;
+}
+
+function listenForFiles() {
+    const file = document.querySelector('#file');
+    file.addEventListener('change', (e) => {
+        // Get the selected file
+        const [file] = e.target.files;
+        // Get the file name and size
+        const { name: fileName } = file;
+        document.querySelector('.file-name').textContent = fileName;
+    });
 }
