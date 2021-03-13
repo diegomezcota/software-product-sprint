@@ -15,15 +15,15 @@
 package com.google.sps.data;
 
 /** An joke submitted by an user. */
-public final class Joke {
+public final class Greeting {
 
   private final long id;
-  private final String joke;
+  private final String greeting;
   private final long timestamp;
 
-  public Joke(long id, String joke, long timestamp) {
+  public Greeting(long id, String greeting, long timestamp) {
     this.id = id;
-    this.joke = joke;
+    this.greeting = greeting;
     this.timestamp = timestamp;
   }
 }
