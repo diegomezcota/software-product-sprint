@@ -28,12 +28,17 @@ function addRandomFact() {
 }
 
 function listenForFiles() {
-    const file = document.querySelector('#file');
+    listenForTypeOfFiles('#file', '.file-name');
+    listenForTypeOfFiles('#file-to-analyze', '.file-to-analyze-name');
+}
+
+function listenForTypeOfFiles(inputID, nameElement) {
+    const file = document.querySelector(inputID);
     file.addEventListener('change', (e) => {
         // Get the selected file
         const [file] = e.target.files;
         // Get the file name and size
         const { name: fileName } = file;
-        document.querySelector('.file-name').textContent = fileName;
+        document.querySelector(nameElement).textContent = fileName;
     });
 }
