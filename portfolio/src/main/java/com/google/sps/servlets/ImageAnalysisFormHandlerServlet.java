@@ -26,6 +26,7 @@ import com.google.cloud.vision.v1.EntityAnnotation;
 import com.google.cloud.vision.v1.Feature;
 import com.google.cloud.vision.v1.Image;
 import com.google.cloud.vision.v1.ImageAnnotatorClient;
+import com.google.datastore.v1.Value;
 import com.google.protobuf.ByteString;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,6 +40,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.KeyFactory;
+import java.io.IOException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StructuredQuery.OrderBy;
+import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 
 /**
  * Takes the image uploaded by the user, stores it in Cloud Storage, and then extracts labels using
@@ -64,21 +81,27 @@ public class ImageAnalysisFormHandlerServlet extends HttpServlet {
     // Get the labels of the image that the user uploaded.
     List<EntityAnnotation> imageLabels = getImageLabels(imageBytes);
 
-    // Output some HTML that shows the data the user entered.
-    // You could also store these in Datastore instead.
-    response.setContentType("text/html");
-    PrintWriter out = response.getWriter();
-    out.println("<p>Here's the image you uploaded:</p>");
-    out.println("<a href=\"" + imageUrl + "\">");
-    out.println("<img src=\"" + imageUrl + "\" />");
-    out.println("</a>");
-    out.println("<p>Here are the labels we extracted:</p>");
-    out.println("<ul>");
+    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Label");
+
+    // Store labels and image in Datastore
     for (EntityAnnotation label : imageLabels) {
-      out.println("<li>" + label.getDescription() + " " + label.getScore());
-    }
-    out.println("</ul>");
-  }
+        // agregarla a la lista de labels si es que no existe
+        String description = label.getDescription();
+        FullEntity labelEntity =
+            Entity.newBuilder(keyFactory.newKey())
+                .set("id", description)
+                .build();
+        datastore.put(labelEntity);
+        // agregar la imagen a su Kind
+        KeyFactory keyFactoryLabel = datastore.newKeyFactory().setKind(description);
+        FullEntity imageEntity = 
+            Entity.newBuilder(keyFactoryLabel.newKey())
+                .set("img", imageUrl)
+                .build();
+        datastore.put(imageEntity);
+     }
+   }
 
   /**
    * Uses the Google Cloud Vision API to generate a list of labels that apply to the image
