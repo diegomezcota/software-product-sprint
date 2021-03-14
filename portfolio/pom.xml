@@ -61,6 +61,12 @@
         <artifactId>google-cloud-datastore</artifactId>
         <version>1.104.0</version>
     </dependency>
+    <!--Cloud Vision-->
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-vision</artifactId>
+        <version>1.100.0</version>
+    </dependency>
   </dependencies>
 
   <build>
