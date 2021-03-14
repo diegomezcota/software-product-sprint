@@ -167,3 +167,11 @@ input:focus + label {
   font-size: 0.85rem;
   color: #555;
 }
+
+.file-to-analyze-name {
+  position: absolute;
+  bottom: -40px;
+  left: 10px;
+  font-size: 0.85rem;
+  color: #555;
+}
