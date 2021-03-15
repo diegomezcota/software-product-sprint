@@ -16,6 +16,7 @@ package com.google.sps.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
@@ -44,28 +45,31 @@ public class ListAnalyzedImages extends HttpServlet {
         QueryResults<Entity> labelResults = datastore.run(query);
 
         List<Label> labels = new ArrayList<>();
+        HashSet<String> uniqueLabels = new HashSet<String>();
         while (labelResults.hasNext()) {
             Entity labelEntity = labelResults.next();
             // query labelID kind
             String description = labelEntity.getString("description");
-            Datastore datastoreImages = DatastoreOptions.getDefaultInstance().getService();
-            // query images
-            Query<Entity> queryImage = Query.newEntityQueryBuilder().setKind(description)
-                    .setOrderBy(OrderBy.desc("timestamp")).build();
-            QueryResults<Entity> imageResults = datastoreImages.run(queryImage);
-            ArrayList<String> imagesFromLabel = new ArrayList<String>();
-            while (imageResults.hasNext()) {
-                Entity imageEntity = imageResults.next();
-                String imageUrl = imageEntity.getString("imageUrl");
-                imagesFromLabel.add(imageUrl);
+            if (!uniqueLabels.contains(description)) {
+                uniqueLabels.add(description);
+                Datastore datastoreImages = DatastoreOptions.getDefaultInstance().getService();
+                // query images
+                Query<Entity> queryImage = Query.newEntityQueryBuilder().setKind(description)
+                        .setOrderBy(OrderBy.desc("timestamp")).build();
+                QueryResults<Entity> imageResults = datastoreImages.run(queryImage);
+                ArrayList<String> imagesFromLabel = new ArrayList<String>();
+                while (imageResults.hasNext()) {
+                    Entity imageEntity = imageResults.next();
+                    String imageUrl = imageEntity.getString("imageUrl");
+                    imagesFromLabel.add(imageUrl);
+                }
+                Label label = new Label(description, imagesFromLabel);
+                labels.add(label);
             }
-        Label label = new Label(description, imagesFromLabel);
-        labels.add(label);
-    }
+        }
 
-    Gson gson = new Gson();
-
-    response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(labels));
+        Gson gson = new Gson();
+        response.setContentType("application/json;");
+        response.getWriter().println(gson.toJson(labels));
   }
 }
