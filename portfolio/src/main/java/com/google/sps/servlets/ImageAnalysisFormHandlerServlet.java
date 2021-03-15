@@ -94,7 +94,7 @@ public class ImageAnalysisFormHandlerServlet extends HttpServlet {
                 .build();
         datastore.put(imageEntity);
      }
-     response.sendRedirect("/index.html");
+     response.sendRedirect("/analyzedGallery.html");
    }
 
   /**
