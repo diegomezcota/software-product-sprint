@@ -58,13 +58,17 @@ public class ListAnalyzedImages extends HttpServlet {
                         .setOrderBy(OrderBy.desc("timestamp")).build();
                 QueryResults<Entity> imageResults = datastoreImages.run(queryImage);
                 ArrayList<String> imagesFromLabel = new ArrayList<String>();
+                int numberOfEntities = 0;
                 while (imageResults.hasNext()) {
+                    numberOfEntities += 1;
                     Entity imageEntity = imageResults.next();
                     String imageUrl = imageEntity.getString("imageUrl");
                     imagesFromLabel.add(imageUrl);
                 }
-                Label label = new Label(description, imagesFromLabel);
-                labels.add(label);
+                if (numberOfEntities > 1) {
+                    Label label = new Label(description, imagesFromLabel);
+                    labels.add(label);
+                }
             }
         }
 
