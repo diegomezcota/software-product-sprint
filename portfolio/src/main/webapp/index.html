@@ -151,16 +151,21 @@
             </div>
         </div>
         <div class="form-inline">
-            <form action="/jokes-handler" method="POST">
-                <h2 class="header-text">Tell me your favorite joke!</h2>
+            <form action="/greeting-handler" method="POST">
+                <h2 class="header-text">Leave a greeting or a message!</h2>
                 <div class="centered-element">
-                    <textarea name="joke-input"></textarea>
+                    <textarea name="greeting-input"></textarea>
                 </div>
                 <br/>
                 <div class="centered-element">
                     <input  class="function-button" type="submit" />
                 </div>
             </form>
+        </div>
+        <div class="centered-element">
+            <a href="greetings.html" target="blank_">
+                <h3>Click here to see all of the greetings!</h3>
+            </a>
         </div>
         <div class="form-inline">
             <form action="/upload" method="POST" enctype="multipart/form-data">

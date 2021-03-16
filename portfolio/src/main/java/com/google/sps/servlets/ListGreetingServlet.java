@@ -21,7 +21,7 @@ import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
-import com.google.sps.data.Joke;
+import com.google.sps.data.Greeting;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,31 +32,31 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /** Servlet responsible for listing tasks. */
-@WebServlet("/list-jokes")
-public class ListJokesServlet extends HttpServlet {
+@WebServlet("/list-greetings")
+public class ListGreetingServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     Query<Entity> query =
-        Query.newEntityQueryBuilder().setKind("Joke").setOrderBy(OrderBy.desc("timestamp")).build();
+        Query.newEntityQueryBuilder().setKind("Greeting").setOrderBy(OrderBy.desc("timestamp")).build();
     QueryResults<Entity> results = datastore.run(query);
 
-    List<Joke> jokes = new ArrayList<>();
+    List<Greeting> greetings = new ArrayList<>();
     while (results.hasNext()) {
       Entity entity = results.next();
 
       long id = entity.getKey().getId();
-      String joke_input = entity.getString("joke-input");
+      String greeting_input = entity.getString("greeting-input");
       long timestamp = entity.getLong("timestamp");
 
-      Joke joke = new Joke(id, joke_input, timestamp);
-      jokes.add(joke);
+      Greeting greeting = new Greeting(id, greeting_input, timestamp);
+      greetings.add(greeting);
     }
 
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(jokes));
+    response.getWriter().println(gson.toJson(greetings));
   }
 }

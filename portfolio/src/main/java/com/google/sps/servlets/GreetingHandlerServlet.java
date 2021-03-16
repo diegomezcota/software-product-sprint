@@ -28,20 +28,20 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
 /** Servlet responsible for creating new tasks. */
-@WebServlet("/jokes-handler")
-public class JokesHandlerServlet extends HttpServlet {
+@WebServlet("/greeting-handler")
+public class GreetingHandlerServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Sanitize user input to remove HTML tags and JavaScript.
-    String joke = Jsoup.clean(request.getParameter("joke-input"), Whitelist.none());
+    String greeting = Jsoup.clean(request.getParameter("greeting-input"), Whitelist.none());
     long timestamp = System.currentTimeMillis();
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Joke");
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Greeting");
     FullEntity taskEntity =
         Entity.newBuilder(keyFactory.newKey())
-            .set("joke-input", joke)
+            .set("greeting-input", greeting)
             .set("timestamp", timestamp)
             .build();
     datastore.put(taskEntity);
